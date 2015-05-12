@@ -687,38 +687,39 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
         return true;
     }
 
-    @Override
+    /* Voice legacy code mleutene */
+    /*@Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.mainmenu_voice_recognition).setVisible(mVoiceRecognitionEnabled);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
+        /*if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
-        }
+        }*/
         switch (item.getItemId()) {
             case R.id.mainmenu_openhab_preferences:
                 Intent settingsIntent = new Intent(this.getApplicationContext(), OpenHABPreferencesActivity.class);
                 startActivityForResult(settingsIntent, SETTINGS_REQUEST_CODE);
                 Util.overridePendingTransition(this, false);
                 return true;
-            case R.id.mainmenu_openhab_selectsitemap:
+            /*case R.id.mainmenu_openhab_selectsitemap:
                 SharedPreferences settings =
                         PreferenceManager.getDefaultSharedPreferences(OpenHABMainActivity.this);
                 SharedPreferences.Editor preferencesEditor = settings.edit();
                 preferencesEditor.putString(Constants.PREFERENCE_SITEMAP, "");
                 preferencesEditor.commit();
                 selectSitemap(openHABBaseUrl, true);
-                return true;
+                return true;*/
             case android.R.id.home:
                 Log.d(TAG, "Home selected");
                 if (pager.getCurrentItem() > 0) {
                     pager.setCurrentItem(0);
                 }
                 return true;
-            case R.id.mainmenu_openhab_clearcache:
+            /*case R.id.mainmenu_openhab_clearcache:
                 Log.d(TAG, "Restarting");
                 // Get launch intent for application
                 Intent restartIntent = getBaseContext().getPackageManager()
@@ -731,7 +732,7 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
                 // Start launch activity
                 startActivity(restartIntent);
                 // Start launch activity
-                return true;
+                return true;*/
             case R.id.mainmenu_openhab_writetag:
                 Intent writeTagIntent = new Intent(this.getApplicationContext(), OpenHABWriteTagActivity.class);
                 // TODO: get current display page url, which? how? :-/
@@ -744,17 +745,18 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
                     }
                 }
                 return true;
-            case R.id.mainmenu_openhab_info:
+            /*case R.id.mainmenu_openhab_info:
                 Intent infoIntent = new Intent(this.getApplicationContext(), OpenHABInfoActivity.class);
                 infoIntent.putExtra(OpenHABVoiceService.OPENHAB_BASE_URL_EXTRA, openHABBaseUrl);
                 infoIntent.putExtra("username", openHABUsername);
                 infoIntent.putExtra("password", openHABPassword);
                 startActivityForResult(infoIntent, INFO_REQUEST_CODE);
                 Util.overridePendingTransition(this, false);
-                return true;
-            case R.id.mainmenu_voice_recognition:
+                return true;*/
+            /* voice legacy code mleutene */
+            /*case R.id.mainmenu_voice_recognition:
                 launchVoiceRecognition();
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
