@@ -333,10 +333,10 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
             checkFullscreen();
         }
 
-        gcmRegistration = new GcmRegistration(this);
+        /*gcmRegistration = new GcmRegistration(this);
         if(gcmRegistration.checkPlayServices()) {
             gcmRegistration.register(SENDER_ID);
-        }
+        }*/
 
     }
 

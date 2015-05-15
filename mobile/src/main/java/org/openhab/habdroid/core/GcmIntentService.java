@@ -58,17 +58,17 @@ public class GcmIntentService extends IntentService {
         if (!extras.isEmpty()) {
             if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
                 // If this is notification, create new one
-                if (!intent.hasExtra("notificationId")) {
+                /*if (!intent.hasExtra("notificationId")) {
                     notificationId = 1;
                 } else {
                     notificationId = Integer.parseInt(intent.getExtras().getString("notificationId"));
                 }
-                if (intent.getExtras().getString("type").equals("notification")) {
-                    sendNotification(intent.getExtras().getString("message"), notificationId);
+                if (intent.getExtras().getString("type").equals("notification")) {*/
+                    sendNotification(intent.getExtras().toString(), 1);
                 // If this is hideNotification, cancel existing notification with it's id
-                } else if (intent.getExtras().getString("type").equals("hideNotification")) {
+                /*} else if (intent.getExtras().getString("type").equals("hideNotification")) {
                     mNotificationManager.cancel(Integer.parseInt(intent.getExtras().getString("notificationId")));
-                }
+                }*/
             }
         }
         // Release the wake lock provided by the WakefulBroadcastReceiver.
