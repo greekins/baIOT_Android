@@ -80,6 +80,7 @@ import org.openhab.habdroid.model.OpenHABSitemap;
 import org.openhab.habdroid.ui.drawer.OpenHABDrawerAdapter;
 import org.openhab.habdroid.ui.drawer.OpenHABDrawerItem;
 import org.openhab.habdroid.util.Constants;
+import org.openhab.habdroid.util.GcmRegistration;
 import org.openhab.habdroid.util.MyAsyncHttpClient;
 import org.openhab.habdroid.util.Util;
 import org.w3c.dom.Document;
@@ -102,7 +103,7 @@ import de.duenndns.ssl.MemorizingTrustManager;
 
 public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSelectedListener,
         OpenHABTrackerReceiver, MemorizingResponder {
-    public static final String GCM_SENDER_ID = "737820980945";
+    public static final String GCM_SENDER_ID = "88856250556";
     // GCM Registration expiration
     public static final long REGISTRATION_EXPIRY_TIME_MS = 1000 * 3600 * 24 * 7;
     // Logging TAG
@@ -164,6 +165,10 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
     private ProgressBar mProgressBar;
     private Boolean mIsMyOpenHAB = false;
     private String mRegId = null;
+
+    private GcmRegistration gcmRegistration;
+    private  static final String SENDER_ID = "88856250556";
+
     /*
      *Daydreaming gets us into a funk when in fullscreen, this allows us to
      *reset ourselves to fullscreen.
@@ -327,6 +332,12 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
             registerReceiver(dreamReceiver, new IntentFilter("android.intent.action.DREAMING_STOPPED"));
             checkFullscreen();
         }
+
+        gcmRegistration = new GcmRegistration(this);
+        if(gcmRegistration.checkPlayServices()) {
+            gcmRegistration.register(SENDER_ID);
+        }
+
     }
 
     @Override
