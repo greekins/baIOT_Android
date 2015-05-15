@@ -251,7 +251,7 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
             mOpenHABVersion = savedInstanceState.getInt("openHABVersion");
             mSitemapList = savedInstanceState.getParcelableArrayList("sitemapList");
         }
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        /*mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_navigation_drawer,
                 R.string.app_name, R.string.app_name) {
@@ -265,10 +265,10 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);*/
         if (mSitemapList == null)
             mSitemapList = new ArrayList<OpenHABSitemap>();
-        mDrawerItemList = new ArrayList<OpenHABDrawerItem>();
+        /*mDrawerItemList = new ArrayList<OpenHABDrawerItem>();
         mDrawerAdapter = new OpenHABDrawerAdapter(this, R.layout.openhabdrawer_sitemap_item, mDrawerItemList);
         mDrawerAdapter.setOpenHABUsername(openHABUsername);
         mDrawerAdapter.setOpenHABPassword(openHABPassword);
@@ -292,7 +292,7 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
                 }
             }
         });
-        loadDrawerItems();
+        loadDrawerItems();*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         if (getIntent() != null) {
@@ -333,13 +333,13 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
+        //mDrawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
+        //mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -418,7 +418,7 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
             Toast.makeText(getApplicationContext(), message,
                     Toast.LENGTH_LONG).show();
         openHABBaseUrl = baseUrl;
-        mDrawerAdapter.setOpenHABBaseUrl(openHABBaseUrl);
+        //mDrawerAdapter.setOpenHABBaseUrl(openHABBaseUrl);
         pagerAdapter.setOpenHABBaseUrl(openHABBaseUrl);
         if (!TextUtils.isEmpty(mNfcData)) {
             onNfcTag(mNfcData);
@@ -501,7 +501,7 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
                 if (mSitemapList.size() == 0) {
                     return;
                 }
-                loadDrawerItems();
+                //loadDrawerItems();
             }
             @Override
             public void  onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
@@ -563,7 +563,7 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
                     showAlertDialog(getString(R.string.error_empty_sitemap_list));
                     return;
                 }
-                loadDrawerItems();
+                //loadDrawerItems();
                 // If we are forced to do selection, just open selection dialog
                 if (forceSelect) {
                     showSitemapSelectionDialog(mSitemapList);
@@ -1195,7 +1195,7 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
         }
     }
 
-    private void loadDrawerItems() {
+    /*private void loadDrawerItems() {
         mDrawerItemList.clear();
         if (mSitemapList != null) {
             mDrawerItemList.add(OpenHABDrawerItem.headerItem("Sitemaps"));
@@ -1219,5 +1219,5 @@ public class OpenHABMainActivity extends ActionBarActivity implements OnWidgetSe
             mDrawerItemList.add(OpenHABDrawerItem.menuItem("Setup", getResources().getDrawable(R.drawable.ic_settings_grey600_36dp)));
         }
         mDrawerAdapter.notifyDataSetChanged();
-    }
+    }*/
 }
