@@ -64,7 +64,7 @@ public class GcmIntentService extends IntentService {
                     notificationId = Integer.parseInt(intent.getExtras().getString("notificationId"));
                 }
                 if (intent.getExtras().getString("type").equals("notification")) {*/
-                    sendNotification(intent.getExtras().toString(), 1);
+                    sendNotification(intent.getExtras().getString("message"), 1);
                 // If this is hideNotification, cancel existing notification with it's id
                 /*} else if (intent.getExtras().getString("type").equals("hideNotification")) {
                     mNotificationManager.cancel(Integer.parseInt(intent.getExtras().getString("notificationId")));
